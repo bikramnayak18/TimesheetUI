@@ -1,0 +1,35 @@
+<div >
+    <div class="container">
+      <div class="row" *ngFor="let model of models; let i = index">
+        <div class="col-md-2">
+          <div class="form-group">
+            <label for="fromDate">From Date</label>
+            <input type="text" class="form-control" id="{{'FromDate'+i}}" name="{{'FromDate'+i}}" readonly
+              [(ngModel)]="model.FromDate">
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group">
+            <label for="name">To Date</label>
+            <input type="text" class="form-control" id="{{'ToDate'+i}}" [(ngModel)]="model.ToDate"
+              name="{{'ToDate'+i}}" readonly>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group">
+              <label for="name">Status</label>
+              <input type="text" class="form-control" id="{{'status'+i}}" [(ngModel)]="model.Status"
+                name="{{'status'+i}}" readonly>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group">
+              <a *ngIf = "model.Status == 'Rejected'" [routerLink]="['/edit-timesheet', model.EmpId, model.FromDate]">
+                      edit
+                      </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+</div>

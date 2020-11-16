@@ -1,0 +1,67 @@
+
+<div [hidden]="submitted">
+    <form #timesheetForm="ngForm"  class="list-group">
+  
+      <div class="container">
+        <div class="row" *ngFor="let model of models; let i = index">
+          <div class="col-md-1">
+            <div class="form-group">
+              <label for="power">Project Id</label>
+              <input type="text" class="form-control" id="{{'projectId'+i}}" name="{{'projectId'+i}}" readonly
+                [(ngModel)]="model.projectId">
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="form-group">
+              <label for="name">Project Name</label>
+              <input type="text" class="form-control" id="{{'projectName'+i}}" [(ngModel)]="model.projectName"
+                name="{{'projectName'+i}}" readonly>
+              <!-- <div [hidden]="name.valid || name.pristine" class="alert alert-danger">Task is Required</div> -->
+            </div>
+          </div>
+          <div class="col-md-1">
+            <div class="form-group">
+              <label for="mon">{{myDate[0] | date: 'shortDate' }}</label>
+              <input type="text" class="form-control" id="{{'mon'+i}}" required
+                class="form-control ng-untouched ng-pristine ng-valid" [(ngModel)]="model.mon" name="{{'mon'+i}}">
+            </div>
+          </div>
+          <div class="col-md-1">
+            <div class="form-group">
+              <label for="mon">{{myDate[1] | date: 'shortDate' }}</label>
+              <input type="text" class="form-control" id="{{'tue'+i}}" required
+                class="form-control ng-untouched ng-pristine ng-valid" [(ngModel)]="model.tue" name="{{'tue'+i}}">
+            </div>
+          </div>
+          <div class="col-md-1">
+            <div class="form-group">
+              <label for="mon">{{myDate[2] | date: 'shortDate' }}</label>
+              <input type="text" class="form-control" id="{{'wed'+i}}" required
+                class="form-control ng-untouched ng-pristine ng-valid" [(ngModel)]="model.wed" name="{{'wed'+i}}">
+            </div>
+          </div>
+          <div class="col-md-1">
+            <div class="form-group">
+              <label for="mon">{{myDate[3] | date: 'shortDate' }}</label>
+              <input type="text" class="form-control" id="{{'thu'+i}}" required
+                class="form-control ng-untouched ng-pristine ng-valid" [(ngModel)]="model.thu" name="{{'thu'+i}}">
+            </div>
+          </div>
+          <div class="col-md-1">
+            <div class="form-group">
+              <label for="mon">{{myDate[4] | date: 'shortDate' }}</label>
+              <input type="text" class="form-control" id="{{'fri'+i}}" required
+                class="form-control ng-untouched ng-pristine ng-valid" [(ngModel)]="model.fri" name="{{'fri'+i}}">
+            </div>
+          </div>
+        </div>
+        
+        <button class="btn btn-success" (click)="UpdateTimesheet('Approved')">Approve</button>
+        <button class="btn btn-success" (click)="UpdateTimesheet('Rejected')">Reject</button>
+      </div>
+    </form>
+  </div>
+  
+  <div [hidden]="!submitted">
+      {{approveMessage}}
+  </div>
